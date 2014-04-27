@@ -6,14 +6,18 @@ library(stringr)
 # getting data into R ####
 # metadata, train and test destinations
 
+# IMPORTANT !!!
+# For reproducing the analysis, please use your own path for
+# metadata_dest, train_dest, test_dest
+
 metadata_dest <- 
-  "H:/Users/majamiha-s/datasciencecoursera/UCI HAR Dataset/"
+  "H:/Users/majamiha-s/Documents/GitHub/getting_cleaning_data/UCI HAR Dataset/"
 
 train_dest <- 
-  "H:/Users/majamiha-s/datasciencecoursera/UCI HAR Dataset/train/"
+  "H:/Users/majamiha-s/Documents/GitHub/getting_cleaning_data/UCI HAR Dataset/train/"
 
 test_dest <- 
-  "H:/Users/majamiha-s/datasciencecoursera/UCI HAR Dataset/test/"
+  "H:/Users/majamiha-s/Documents/GitHub/getting_cleaning_data/UCI HAR Dataset/test/"
 
 # activity_labels and features (dimension tables)
 
@@ -170,7 +174,7 @@ second_tidy_df <-
   group_by(sample_type, subject, activity, feature) %.%
   summarise(value = mean(value, na.rm = TRUE)) %.%
   dcast(sample_type + subject + activity ~ feature) %.%
-  arrange(sample_type, activity, subject) %.%
+  #arrange(sample_type, activity, subject) %.%
   merge(activity_labels) %.%
   melt(id = c("sample_type", "subject", "activity", "activity_descr"), variable.name = "feature") %.%
   dcast(sample_type + subject + activity + activity_descr ~ feature) %.%
@@ -178,8 +182,10 @@ second_tidy_df <-
   tbl_df()
 
 
-# write tidy datasets
+# write tidy datasets ####
 
-write.table(first_tidy_df)
+write.table(first_tidy_df, 
+            file = "first_tidy_df.csv")
 
-write.table(second_tidy_df)
+write.table(second_tidy_df,
+            file = "second_tidy_df.csv")
