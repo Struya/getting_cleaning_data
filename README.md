@@ -34,7 +34,7 @@ work with, and clean a data set*.
 The source code that is provided in the run_analisys.r  
 loads the raw datasets for train and test group, renames some variables, merges  
 several datasets together, filters columns according to instructions,   
-and produces the required tidy datasets.
+and produces the required tidy datasets. It includes some comments where needed.
 
 Please note that in order to reproduce the tidy datasets, replace my path  
 to files with your own.
