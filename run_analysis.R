@@ -185,7 +185,7 @@ second_tidy_df <-
 # write tidy datasets ####
 
 write.table(first_tidy_df, 
-            file = "first_tidy_df.csv")
+            file = "first_tidy_df.txt")
 
 write.table(second_tidy_df,
-            file = "second_tidy_df.csv")
+            file = "second_tidy_df.txt")
